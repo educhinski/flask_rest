@@ -51,3 +51,12 @@ def get_user():
     # and tries to log in and returns true or false
     status = login(username, password)
     return status
+
+# demo for file uploads
+@app.route('/upload', methods=['GET', 'POST'])
+def upload_file():
+    if request.methods == 'POST':
+        static_file = request.files['the_file']
+        # here you can send this static_file to a storage service
+        # or save it permanently to the file system
+        static_file.save('var/ww/uploads/profilephoto.png')
