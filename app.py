@@ -41,3 +41,13 @@ def login():
 def hello(name=None):
     # name=None ensures the code runs even when no name is provided
     return render_template('user_profile.html', name=name)
+
+# accessing data request
+@app.route('/user', methods=['GET', 'POST'])
+def get_user():
+    username = request.form['username']
+    password = request.form['password']
+    # login(arg, arg) is a function that tries to log in
+    # and tries to log in and returns true or false
+    status = login(username, password)
+    return status
