@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+
 app = Flask(__name__)
 
 
@@ -34,3 +35,9 @@ def login():
     elif request.method == 'GET':
         # serve login page
         serve_login_page()
+
+# rendering templates
+@app.route('/user/<name>')
+def hello(name=None):
+    # name=None ensures the code runs even when no name is provided
+    return render_template('user_profile.html', name=name)
